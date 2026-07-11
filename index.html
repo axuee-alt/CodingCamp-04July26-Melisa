@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ExpenseTracker - Simple Budget Management</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-mode">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">ExpenseTracker</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+            </ul>
+            <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+                <span class="icon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-left">
+                <h1>Track expenses. Set budgets. Stay organized.</h1>
+                <p class="hero-description">A simple web app to help you monitor spending, categorize expenses, and manage your monthly budget. All data stays in your browser.</p>
+                <div class="hero-cta">
+                    <a href="#app" class="btn-primary">Get Started</a>
+                    <a href="#dashboard" class="btn-secondary">View Demo</a>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="dashboard-preview-hero">
+                    <div class="preview-header">
+                        <span class="preview-dot"></span>
+                        <span class="preview-dot"></span>
+                        <span class="preview-dot"></span>
+                    </div>
+                    <div class="preview-content">
+                        <div class="preview-stat">
+                            <span class="stat-label">Budget</span>
+                            <span class="stat-value" id="hero-budget">—</span>
+                        </div>
+                        <div class="preview-stat">
+                            <span class="stat-label">Spent</span>
+                            <span class="stat-value" id="hero-spent">—</span>
+                        </div>
+                        <div class="preview-stat">
+                            <span class="stat-label">Remaining</span>
+                            <span class="stat-value" id="hero-remaining">—</span>
+                        </div>
+                        <div class="hero-progress-section">
+                            <div class="hero-progress-bar-wrapper">
+                                <div id="hero-progress-bar" class="hero-progress-bar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="hero-recent-section">
+                            <div class="hero-recent-label">Recent Activity</div>
+                            <div id="hero-recent-list" class="hero-recent-list">
+                                <div class="hero-empty">No transactions yet</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Core Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Expense Tracking</h3>
+                    <p>Log every transaction with amount, category, date, and description. View your spending history at a glance.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Budget Planning</h3>
+                    <p>Set monthly spending limits and track your progress. Get visual feedback when approaching your budget.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3>Monthly Reports</h3>
+                    <p>Review spending patterns by month. See total expenses and transaction counts for each period.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🏷️</div>
+                    <h3>Custom Categories</h3>
+                    <p>Create personalized spending categories beyond the defaults. Organize expenses your way.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Dashboard Preview Section -->
+    <section id="dashboard" class="dashboard-section">
+        <div class="container">
+            <h2>Simple, Functional Interface</h2>
+            <p class="section-description">View all your financial data in one place. The dashboard shows spending by category, transaction history, and budget progress.</p>
+            <div class="dashboard-mockup">
+                <div class="mockup-sidebar">
+                    <div class="mockup-item">Overview</div>
+                    <div class="mockup-item">Transactions</div>
+                    <div class="mockup-item">Categories</div>
+                    <div class="mockup-item">Monthly</div>
+                </div>
+                <div class="mockup-main">
+                    <div class="mockup-row">
+                        <div class="mockup-card">
+                             <h4>Total Budget</h4>
+                             <p id="preview-budget">$0.00</p>
+                        </div>
+                        <div class="mockup-card">
+                             <h4>Spent</h4>
+                             <p id="preview-spent">$0.00</p>
+                        </div>
+                        <div class="mockup-card">
+                             <h4>Remaining</h4>
+                             <p id="preview-remaining">$0.00</p>
+                        </div>
+                    </div>
+                    <div class="mockup-chart-section">
+                        <h4>Budget Progress</h4>
+                        <div class="mockup-progress-wrapper">
+                            <div id="preview-progress-bar" class="mockup-progress-bar" style="width: 0%"></div>
+                        </div>
+                        <p class="mockup-progress-label"><span id="preview-progress-text">0%</span> of budget used</p>
+                    </div>
+                    <div class="mockup-list-section">
+                        <h4>Recent Transactions</h4>
+                        <div id="preview-transactions" class="mockup-list">
+                            <div class="mockup-empty">No transactions yet. Add some to see them here.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How does the expense tracker work?</h3>
+                    <p>Add transactions with amount, category, date, and optional description. Set a monthly budget to track spending progress. View breakdowns by category or month. All calculations happen instantly in your browser.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Is my data stored online?</h3>
+                    <p>No. All data stays in your browser's local storage. Nothing is sent to any server. Your financial information never leaves your device. Clear browser data = clear app data.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Can I use it on mobile?</h3>
+                    <p>Yes. Interface adapts to phone, tablet, and desktop screens. Works in any modern browser (Chrome, Firefox, Safari, Edge). No app download needed.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How do I delete transactions?</h3>
+                    <p>Click the "Delete" button on any transaction card. Confirm deletion when prompted. Budget and category totals update automatically.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How does dark mode work?</h3>
+                    <p>Click the moon/sun icon in the navigation bar to toggle between dark and light themes. Your preference is saved automatically and persists across sessions.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Do I need an account?</h3>
+                    <p>No account required. Just open the page and start tracking. Since data stays local, you don't need to sign up, log in, or remember any passwords.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Section -->
+    <section id="app" class="app-section">
+        <div class="container">
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <h2>Dashboard</h2>
+                <div class="budget-input-inline">
+                    <input type="number" id="budget-input" placeholder="Set budget" min="0" step="0.01">
+                    <button type="button" id="set-budget-btn" class="btn-primary">Set Budget</button>
+                </div>
+            </div>
+            <div id="budget-error" class="error-message"></div>
+
+            <!-- Budget Summary Cards -->
+            <div class="budget-summary-grid">
+                <div class="budget-card">
+                    <div class="budget-card-label">Total Budget</div>
+                    <div class="budget-card-value" id="header-budget">$0.00</div>
+                </div>
+                <div class="budget-card">
+                    <div class="budget-card-label">Spent</div>
+                    <div class="budget-card-value spent" id="header-spent">$0.00</div>
+                </div>
+                <div class="budget-card">
+                    <div class="budget-card-label">Remaining</div>
+                    <div class="budget-card-value remaining" id="header-remaining">$0.00</div>
+                </div>
+                <div class="budget-card progress-card">
+                    <div class="budget-card-label">Budget Progress</div>
+                    <div class="progress-info">
+                        <span class="progress-text" id="header-progress-text">$0 spent of $0</span>
+                        <span class="progress-percent" id="header-progress-percent">0%</span>
+                    </div>
+                    <div class="progress-bar-wrapper">
+                        <div id="header-progress-bar" class="progress-bar status-normal" style="width: 0%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Chart Section -->
+                <div class="dashboard-card chart-card">
+                    <h3>Spending by Category</h3>
+                    <div id="category-chart-container">
+                        <canvas id="category-pie-chart"></canvas>
+                        <div id="chart-empty-state" class="chart-empty">
+                            <div class="empty-icon">📊</div>
+                            <p class="empty-title">No spending data yet</p>
+                            <p class="empty-subtitle">Add transactions to see category breakdown</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="dashboard-card recent-card">
+                    <h3>Recent Transactions</h3>
+                    <div id="recent-transactions-list" class="recent-list">
+                        <div class="chart-empty">
+                            <div class="empty-icon">📝</div>
+                            <p class="empty-title">No transactions yet</p>
+                            <p class="empty-subtitle">Add your first transaction to start tracking</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="dashboard-tabs">
+                <button class="dash-tab-btn active" data-view="overview">Overview</button>
+                <button class="dash-tab-btn" data-view="transactions">Transactions</button>
+                <button class="dash-tab-btn" data-view="categories">Categories</button>
+                <button class="dash-tab-btn" data-view="monthly">Monthly</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content-wrapper">
+                <!-- Overview Tab -->
+                <div id="overview-view" class="tab-content active">
+                    <div class="overview-message">
+                        <p>View your financial summary above. Switch tabs to manage transactions, categories, or view monthly reports.</p>
+                    </div>
+                </div>
+
+                <!-- Transactions Tab -->
+                <div id="transactions-view" class="tab-content">
+                    <div class="dashboard-card">
+                        <h3>Add Transaction</h3>
+                        <form id="transaction-form" class="transaction-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="amount">Amount</label>
+                                    <input type="number" id="amount" placeholder="0.00" min="0.01" step="0.01" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="category">Category</label>
+                                    <select id="category" required>
+                                        <option value="">Select category</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="date">Date</label>
+                                    <input type="date" id="date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <input type="text" id="description" placeholder="Optional" maxlength="200">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn-primary">Add Transaction</button>
+                        </form>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>All Transactions</h3>
+                        <div class="transaction-list" id="transaction-list">
+                            <div class="empty-state">
+                                <div class="empty-icon">📝</div>
+                                <p class="empty-title">No transactions yet</p>
+                                <p class="empty-subtitle">Start tracking your expenses by adding your first transaction above.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Categories Tab -->
+                <div id="categories-view" class="tab-content">
+                    <div class="dashboard-card">
+                        <h3>Manage Categories</h3>
+                        <div class="add-category-form">
+                            <input type="text" id="custom-category" placeholder="New category name" maxlength="30">
+                            <button type="button" id="add-category-btn" class="btn-primary">Add Category</button>
+                        </div>
+                        <div id="category-error" class="error-message"></div>
+                    </div>
+
+                    <div class="dashboard-card">
+                        <h3>Spending by Category</h3>
+                        <div id="category-breakdown" class="category-breakdown">
+                            <div class="empty-state">
+                                <div class="empty-icon">🏷️</div>
+                                <p class="empty-title">No spending data yet</p>
+                                <p class="empty-subtitle">Add transactions to see your spending breakdown by category.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Monthly Tab -->
+                <div id="monthly-view" class="tab-content">
+                    <div class="dashboard-card">
+                        <h3>Monthly Summary</h3>
+                        <div id="monthly-summary" class="monthly-summary">
+                            <div class="empty-state">
+                                <div class="empty-icon">📊</div>
+                                <p class="empty-title">No monthly data available</p>
+                                <p class="empty-subtitle">Start adding transactions to see your monthly spending summary.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-column">
+                <h4>ExpenseTracker</h4>
+                <p>Simple budget management. No account required.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#dashboard">Dashboard</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Contact</h4>
+                <p>Email: amelxue402@gmail.com</p>
+                <p>GitHub: https://github.com/axuee-alt/CodingCamp-04July26-Melisa</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 ExpenseTracker. Built with HTML, CSS, and JavaScript. All data stored locally in your browser.</p>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
